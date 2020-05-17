@@ -355,7 +355,7 @@ class _LoginState extends State<Login> {
 
   Future<void> cerrarSesion() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool('_Iniciar', false);
+    pref.setBool('_registro', false);
     setState(() {
       nombreGuardado = '';
       correoGuardado = '';

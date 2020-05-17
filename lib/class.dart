@@ -151,23 +151,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 1.0),
-                    Padding(padding: const EdgeInsets.all(1.0),
-                      child: ClipRRect(borderRadius: BorderRadius.circular(25),
-                        child: Container(
-                          height: 25,
-                          width: 380,
-                            color: Colors.green[500],
-                            child: Text(
-                              'Elaborado por Diana Marlen Meneses Alegria', textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -190,18 +173,78 @@ class _LoginState extends State<Login> {
     if (pref.getBool('_registro')) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new Scaffold(
+          backgroundColor: Colors.green[100],
           appBar: AppBar(
+            backgroundColor: Colors.green,
             automaticallyImplyLeading: false,
             centerTitle: true,
+            title: Text(
+              'Datos guardados',
+              style: TextStyle(color: Colors.black,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,),
+            ),
           ),
           body: ListView(
             children: <Widget>[
               SizedBox(height: 20.0),
               Padding(padding: const EdgeInsets.all(20.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
+                child: Text('Los datos que ingresaste son:',textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,),
+                ),
+                  ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(padding: const EdgeInsets.all(10),
+                child: ClipRRect(borderRadius: BorderRadius.circular(25),
                   child: Container(
-                    height: 40,
+                    height: 30,
+                    width: 150,
+                    color: Colors.green[500],
+                    child: Text('NOMBRE: ' '$nombreGuardado', textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(padding: const EdgeInsets.all(10),
+                child: ClipRRect(borderRadius: BorderRadius.circular(25),
+                  child: Container(
+                    height: 30,
+                    width: 150,
+                    color: Colors.green[500],
+                    child: Text('CORRE0: ''$correoGuardado', textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 200.0),
+              Padding(
+                padding: const EdgeInsets.all(100.0),
+                child: ClipRRect(borderRadius: BorderRadius.circular(25),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    child: MaterialButton(
+                      onPressed: () {
+                        cerrarSesion();
+                      },
+                      color: Colors.green[500],
+                      child: Text(
+                        'Cerrar Sesión',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -212,10 +255,11 @@ class _LoginState extends State<Login> {
     }
   }
 
+
   //Nos manda a otra pagina en donde se guardaran los datos
   void pushPage() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool('_Iniciar', true);
+    pref.setBool('_registro', true);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return new Scaffold(

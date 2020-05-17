@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
-import 'package:login/CampoDeTexto.dart';
-import 'package:login/button.dart';
 import 'package:login/class.dart';
 
 //void main() => runApp(MyApp());
